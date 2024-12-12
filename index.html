@@ -225,23 +225,26 @@
     </ul>
   </nav>
 
+
   <!-- Main Content-->
   <main>
-    <div id="intro-section">Loading intro...</div>
-    <div id="about-section">Loading about...</div>
-    <div id="updates-section">Loading updates...</div>
-    <div id="experience-section">Loading experience...</div>
-    <div id="projects-section">Loading projects...</div>
-    <div id="publications-section">Loading publications...</div>
-    <div id="fundings-section">Loading fundings...</div>
-    <div id="skills-section">Loading skills...</div>
-    <div id="education-section">Loading education...</div>
-    <div id="contact-section">Loading contact...</div>
+    <div id="intro-section">Loading intro section...</div>
+    <div id="about-section">Loading about section...</div>
+    <div id="updates-section">Loading updates section...</div>
+    <div id="experience-section">Loading experience section...</div>
+    <div id="projects-section">Loading projects section...</div>
+    <div id="publications-section">Loading publications section...</div>
+    <div id="fundings-section">Loading fundings section...</div>
+    <div id="skills-section">Loading skills section...</div>
+    <div id="education-section">Loading education section...</div>
+    <div id="contact-section">Loading contact section...</div>
   </main>
 
   <!-- Scripts in correct order -->
   <!-- jQuery first -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+    </script>
 
   <!-- Materialize JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/js/materialize.min.js"></script>
@@ -256,20 +259,14 @@
         const url = `sections/${sectionName}.html`;
         console.log(`Trying to load: ${url}`);
 
-        $.ajax({
+        return $.ajax({
           url: url,
           method: 'GET',
           success: function (html) {
             console.log(`✓ Successfully loaded: ${url}`);
             $(`#${sectionName}-section`).html(html);
-
             // Reinitialize Materialize components after loading
             $(".scrollspy").scrollSpy();
-
-            // If this is the intro section, initialize typed.js
-            if (sectionName === 'intro') {
-              initializeTyped();
-            }
           },
           error: function (xhr, status, error) {
             console.error(`✗ Failed to load: ${url}`);
@@ -279,32 +276,87 @@
         });
       }
 
-      // Load all sections
-      ['intro', 'about', 'updates', 'experience', 'projects',
-        'publications', 'fundings', 'skills', 'education', 'contact']
-        .forEach(loadSection);
+      function initializeTyped() {
+        const element = document.querySelector('.typing');
+        if (element) {
+          if (element.typed) {
+            element.typed.destroy();
+          }
 
-      // Initialize Materialize side nav
-      $(".button-collapse").sideNav({
-        menuWidth: 190,
-        edge: "left",
-        closeOnClick: true
-      });
-    });
+          const typed = new Typed(element, {
+            strings: [
+              "Software Engineer",
+              "C++ Developer",
+              "Robotics and Simulation Engineer",
+              "Parallel and High-Performance Computing Enthusiast",
+              "Open-Source Contributor",
+              "Machine Learning and AI Enthusiast",
+              "Fast-Learner and Problem-Solver"
+            ],
+            loop: true,
+            typeSpeed: 80,
+            backSpeed: 40,
+            startDelay: 1000
+          });
 
-    // Separate function for typed.js initialization
-    function initializeTyped() {
-      if (document.querySelector('.typing')) {
-        var typed = new Typed('.typing', {
-          strings: ["Software Engineer", "C++ Developer", "Robotics and Simulation Engineer",
-            "Parallel and High-Performance Computing Ethusiast", "Open-Source Contributor",
-            "Machine Learning and AI Enthusiast", "Fast-Learner and Problem-Solver"],
-          loop: true,
-          typeSpeed: 80,
-          backSpeed: 40
-        });
+          element.typed = typed;
+        } else {
+          console.error('Typing element not found in the DOM');
+        }
       }
-    }
+
+      // Load all sections and track completion
+      const sectionNames = ['intro', 'about', 'updates', 'experience', 'projects',
+        'publications', 'fundings', 'skills', 'education', 'contact'];
+
+      const sectionPromises = sectionNames.map(loadSection);
+
+      // When all sections are loaded, initialize everything
+      Promise.all(sectionPromises)
+        .then(() => {
+          console.log('All sections loaded successfully. Initializing components...');
+
+          // Initialize navigation
+          $(".button-collapse").sideNav({
+            menuWidth: 190,
+            edge: "left",
+            closeOnClick: true
+          });
+
+          // Initialize Typed.js after everything is loaded
+          initializeTyped();
+
+          // Initialize scrollspy
+          $('.scrollspy').scrollSpy({
+            scrollOffset: 0
+          });
+
+          // Enable smooth scrolling for all anchor links
+          $('a[href*="#"]')
+            .not('[href="#"]')
+            .not('[href="#!"]')
+            .click(function (event) {
+              if (
+                location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
+                &&
+                location.hostname == this.hostname
+              ) {
+                event.preventDefault();
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                  $('html, body').animate({
+                    scrollTop: target.offset().top
+                  }, 800);
+                  return false;
+                }
+              }
+            });
+        })
+        .catch(error => {
+          console.error('Error loading sections:', error);
+        });
+    });
   </script>
 </body>
 
