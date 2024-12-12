@@ -225,34 +225,27 @@
     </ul>
   </nav>
 
-
   <!-- Main Content-->
   <main>
-    <div id="intro-section">Loading intro section...</div>
-    <div id="about-section">Loading about section...</div>
-    <div id="updates-section">Loading updates section...</div>
-    <div id="experience-section">Loading experience section...</div>
-    <div id="projects-section">Loading projects section...</div>
-    <div id="publications-section">Loading publications section...</div>
-    <div id="fundings-section">Loading fundings section...</div>
-    <div id="skills-section">Loading skills section...</div>
-    <div id="education-section">Loading education section...</div>
-    <div id="contact-section">Loading contact section...</div>
+    <div id="intro-section">Loading intro...</div>
+    <div id="about-section">Loading about...</div>
+    <div id="updates-section">Loading updates...</div>
+    <div id="experience-section">Loading experience...</div>
+    <div id="projects-section">Loading projects...</div>
+    <div id="publications-section">Loading publications...</div>
+    <div id="fundings-section">Loading fundings...</div>
+    <div id="skills-section">Loading skills...</div>
+    <div id="education-section">Loading education...</div>
+    <div id="contact-section">Loading contact...</div>
   </main>
 
   <!-- Scripts in correct order -->
-  <!-- jQuery first -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
     </script>
-
-  <!-- Materialize JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/js/materialize.min.js"></script>
-
-  <!-- Typed.js -->
   <script src="assets/vendor/typed.js/typed.min.js"></script>
 
-  <!-- Section loader -->
   <script>
     $(document).ready(function () {
       function loadSection(sectionName) {
@@ -265,7 +258,6 @@
           success: function (html) {
             console.log(`✓ Successfully loaded: ${url}`);
             $(`#${sectionName}-section`).html(html);
-            // Reinitialize Materialize components after loading
             $(".scrollspy").scrollSpy();
           },
           error: function (xhr, status, error) {
@@ -305,33 +297,27 @@
         }
       }
 
-      // Load all sections and track completion
       const sectionNames = ['intro', 'about', 'updates', 'experience', 'projects',
         'publications', 'fundings', 'skills', 'education', 'contact'];
 
       const sectionPromises = sectionNames.map(loadSection);
 
-      // When all sections are loaded, initialize everything
       Promise.all(sectionPromises)
         .then(() => {
           console.log('All sections loaded successfully. Initializing components...');
 
-          // Initialize navigation
           $(".button-collapse").sideNav({
             menuWidth: 190,
             edge: "left",
             closeOnClick: true
           });
 
-          // Initialize Typed.js after everything is loaded
           initializeTyped();
 
-          // Initialize scrollspy
           $('.scrollspy').scrollSpy({
             scrollOffset: 0
           });
 
-          // Enable smooth scrolling for all anchor links
           $('a[href*="#"]')
             .not('[href="#"]')
             .not('[href="#!"]')
