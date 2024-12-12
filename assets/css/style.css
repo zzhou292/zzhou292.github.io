@@ -604,13 +604,9 @@ small {
   }
 
   nav {
-    background: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background: #fff;
     height: 64px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
+    position: absolute;
   }
 
   nav a.button-collapse,
@@ -728,31 +724,45 @@ small {
 
 /* Scrollable Section Styles */
 .scroll-container {
-  height: 500px;
-  /* Fixed height instead of max-height */
-  overflow-y: scroll;
-  /* Force scrollbar to always show */
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  height: 500px !important;
+  /* Force fixed height */
+  overflow-y: scroll !important;
+  /* Force scrollbar */
+  display: block !important;
+  /* Ensure block display */
   position: relative;
-  /* Add this */
+  border: 1px solid #ddd;
+  /* Visual boundary */
+  margin: 20px auto;
+  background: #fff;
 }
 
-/* Container to enforce dimensions */
-#scrollable-content .container {
-  max-width: 1000px;
-  /* Or whatever width you prefer */
-  margin: 0 auto;
+/* Ensure the container doesn't expand */
+#scrollable-content {
+  position: relative;
+  overflow: hidden;
+  /* Prevent container expansion */
+}
+
+/* Force content to be inside the scroll area */
+.scroll-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   padding: 20px;
 }
 
-/* Make sure the content inside is full width */
-.scroll-item {
-  width: 100%;
-  margin-bottom: 20px;
-  padding: 15px;
-  border-bottom: 1px solid #eee;
-  box-sizing: border-box;
+/* Style the scrollbar */
+.scroll-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background: #00796b;
+  border-radius: 5px;
 }
