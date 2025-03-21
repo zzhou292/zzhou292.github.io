@@ -773,3 +773,26 @@ small {
   display: block;
   margin: 0 auto;
 }
+
+/* Skill logos consistent sizing */
+.skill-logo {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  margin: 0 auto 10px;
+  display: block;
+}
+
+/* Add spacing for skill items */
+#skills .col {
+  margin-bottom: 20px;  /* Add space between rows */
+  height: 100px;        /* Set minimum height for each item */
+}
+
+/* Make skill name text more readable */
+#skills .col {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+}
