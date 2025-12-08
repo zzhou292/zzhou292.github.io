@@ -55,32 +55,33 @@
             <div class="col s12 m6 l4">
                 <div class="card medium">
                     <div class="card-image waves-effect waves-block waves-light">
-                        <img alt="RAGBase4Code" src="/assets/img/ragbase4code.jpg"
-                            style="height: 100%; width: 100%" class="activator" />
+                        <img alt="ChronoDreamer project" src="/assets/img/combined_offset0.gif" style="height: 100%; width: 100%"
+                            class="activator" />
                     </div>
                     <div class="card-content">
-                        <span class="card-title activator teal-text hoverline">RAGBase4Code<i
+                        <span class="card-title activator teal-text hoverline">ChronoDreamer<i
                                 class="mdi-navigation-more-vert right"></i></span>
                         <p>
-                            A Secure Local RAG and Finetuning Pipeline for LLM4CODE
+                            Genie-based world model for robotics that learns friction, contact, and multi-body dynamics to
+                            support robust long-horizon planning and physical reasoning.
                         </p>
                     </div>
                     <div class="card-reveal">
                         <span class="card-title grey-text"><small>Accomplishments</small><i
                                 class="mdi-navigation-close right"></i></span>
                         <ul>
-                            <li><b>Tools:</b> Python, LLM, RAG, Sentence Transformers, Qdrant, Ollama, NVIDIA NIM</li>
-                            <li>A framework designed to enhance AI applications with multi-source knowledge retrieval, providing codebase understanding offline and securely.</li>
-                            <li>Multi-Agent Retrieval System - Specialized agents for source code, documentation, and conversation history</li>
-                            <li>Multiple LLM Interfaces - Integration with NVIDIA NIM services and Ollama for local model deployment</li>
-                            <li>Vector Database Implementation - for efficient similarity search with persistent storage and customizable vector dimensions</li>
-                            <li>Architecture - Modular pipeline for document processing, embedding generation, and context-aware retrieval with configurable chunking strategies</li>
-                            <li>Privacy-Focused Design - All data processing happens locally without external API calls when using Ollama integration</li>
+                            <li><b>Tools:</b> Python, C++, world models, differentiable physics, reinforcement learning</li>
+                            <li>Learned a generative genie-like world model based on a spatiotemporal transformer and MaskGIT-style
+                                image generation that predicts long-horizon, autoregressive robot-environment interactions, with
+                                RGB encodings of friction, contact forces, and modes embedded into a continuous latent space.</li>
+                            <li>Designed a contact-centric state representation that encodes normals, friction cones, and
+                                contact modes to make downstream planners contact-aware by construction.</li>
+                            <li>Demonstrated improved task success and sample efficiency in manipulation and locomotion
+                                benchmarks by using the learned world model to enhance AI physical understanding.</li>
                         </ul>
                         <div class="card-action">
-                            <a aria-label="Visit the GitHub repo for project"
-                                href="https://github.com/zzhou292/RAGBase4Code" target="_blank" data-position="top"
-                                data-tooltip="View Source"
+                            <a aria-label="Visit the GitHub repo for ChronoDreamer"
+                                href="https://github.com/uwsbel/ChronoDreamer" target="_blank" data-position="top" data-tooltip="View Source"
                                 class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
                                     class="fa fa-github"></i></a>
                         </div>
@@ -269,6 +270,42 @@
                                     class="fa fa-external-link"></i></a>
                             <a aria-label="Visit the GitHub repo for project"
                                 href="https://github.com/zzhou292/chrono-HIL" target="_blank" data-position="top"
+                                data-tooltip="View Source"
+                                class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
+                                    class="fa fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s12 m6 l4">
+                <div class="card medium">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img alt="RAGBase4Code" src="/assets/img/ragbase4code.jpg"
+                            style="height: 100%; width: 100%" class="activator" />
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator teal-text hoverline">RAGBase4Code<i
+                                class="mdi-navigation-more-vert right"></i></span>
+                        <p>
+                            A Secure Local RAG and Finetuning Pipeline for LLM4CODE
+                        </p>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text"><small>Accomplishments</small><i
+                                class="mdi-navigation-close right"></i></span>
+                        <ul>
+                            <li><b>Tools:</b> Python, LLM, RAG, Sentence Transformers, Qdrant, Ollama, NVIDIA NIM</li>
+                            <li>A framework designed to enhance AI applications with multi-source knowledge retrieval, providing codebase understanding offline and securely.</li>
+                            <li>Multi-Agent Retrieval System - Specialized agents for source code, documentation, and conversation history</li>
+                            <li>Multiple LLM Interfaces - Integration with NVIDIA NIM services and Ollama for local model deployment</li>
+                            <li>Vector Database Implementation - for efficient similarity search with persistent storage and customizable vector dimensions</li>
+                            <li>Architecture - Modular pipeline for document processing, embedding generation, and context-aware retrieval with configurable chunking strategies</li>
+                            <li>Privacy-Focused Design - All data processing happens locally without external API calls when using Ollama integration</li>
+                        </ul>
+                        <div class="card-action">
+                            <a aria-label="Visit the GitHub repo for project"
+                                href="https://github.com/zzhou292/RAGBase4Code" target="_blank" data-position="top"
                                 data-tooltip="View Source"
                                 class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
                                     class="fa fa-github"></i></a>
