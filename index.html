@@ -302,45 +302,49 @@
 
       const sectionPromises = sectionNames.map(loadSection);
 
+      function initializeUIComponents() {
+        $(".button-collapse").sideNav({
+          menuWidth: 190,
+          edge: "left",
+          closeOnClick: true
+        });
+
+        initializeTyped();
+
+        $('.scrollspy').scrollSpy({
+          scrollOffset: 0
+        });
+
+        $('a[href*="#"]')
+          .not('[href="#"]')
+          .not('[href="#!"]')
+          .click(function (event) {
+            if (
+              location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
+              &&
+              location.hostname == this.hostname
+            ) {
+              event.preventDefault();
+              var target = $(this.hash);
+              target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+              if (target.length) {
+                $('html, body').animate({
+                  scrollTop: target.offset().top
+                }, 800);
+                return false;
+              }
+            }
+          });
+      }
+
       Promise.all(sectionPromises)
         .then(() => {
           console.log('All sections loaded successfully. Initializing components...');
-
-          $(".button-collapse").sideNav({
-            menuWidth: 190,
-            edge: "left",
-            closeOnClick: true
-          });
-
-          initializeTyped();
-
-          $('.scrollspy').scrollSpy({
-            scrollOffset: 0
-          });
-
-          $('a[href*="#"]')
-            .not('[href="#"]')
-            .not('[href="#!"]')
-            .click(function (event) {
-              if (
-                location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
-                &&
-                location.hostname == this.hostname
-              ) {
-                event.preventDefault();
-                var target = $(this.hash);
-                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                if (target.length) {
-                  $('html, body').animate({
-                    scrollTop: target.offset().top
-                  }, 800);
-                  return false;
-                }
-              }
-            });
+          initializeUIComponents();
         })
         .catch(error => {
           console.error('Error loading sections:', error);
+          initializeUIComponents();
         });
     });
   </script>
