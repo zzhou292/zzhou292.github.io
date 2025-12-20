@@ -77,6 +77,10 @@
           class="brand-logo grey-blue-text">
           <img src="/assets/img/passport-new.jpg" class="circle img-responsive profile-pic" alt="avatar">
         </a>
+        <div class="side-nav-name">
+          <span class="name">Json Zhenhao Zhou</span>
+          <span class="title">Engineer & Researcher</span>
+        </div>
       </li>
 
       <li class="bold">
@@ -164,13 +168,12 @@
     </ul>
   </nav>
 
-  <!-- Nav class 2 -->
-  <nav class="hide-on-large only trigger z-depth-1 top-nav">
+  <!-- Nav class 2 (mobile header) -->
+  <nav class="hide-on-large-only trigger z-depth-1 top-nav">
     <a aria-label="Toggle visibility of the mobile navbar" href="#" data-activates="slide-out"
       class="button-collapse"><i class="mdi-navigation-menu"></i></a>
     <div class="name-title">
-      <a id="name" aria-label="Navigate to the beginning of the page" href="#" class="teal-text">Json Zhenhao
-        Zhou</a><span class="black-text">Engineer and Researcher</span>
+      <a id="name" aria-label="Navigate to the beginning of the page" href="#">Json Zhenhao Zhou - Engineer &amp; Researcher</a>
     </div>
   </nav>
 
@@ -335,13 +338,19 @@
           });
       }
 
-      Promise.all(sectionPromises)
-        .then(() => {
-          console.log('All sections loaded successfully. Initializing components...');
-          initializeUIComponents();
-        })
-        .catch(error => {
-          console.error('Error loading sections:', error);
+      Promise.allSettled(sectionPromises)
+        .then((results) => {
+          const failedSections = results
+            .map((result, index) => ({ result, name: sectionNames[index] }))
+            .filter(item => item.result.status === 'rejected')
+            .map(item => item.name);
+
+          if (failedSections.length > 0) {
+            console.warn('Some sections failed to load:', failedSections.join(', '));
+          } else {
+            console.log('All sections loaded successfully.');
+          }
+
           initializeUIComponents();
         });
     });

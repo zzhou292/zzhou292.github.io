@@ -115,17 +115,7 @@ blockquote * {
 }
 
 .profile-pic {
-  position: relative;
-  max-width: 130px;
-  max-height: 130px;
-  width: auto;
-  height: auto;
-  overflow: hidden;
-  margin: -31px;
-  margin-left: -7px;
-  border: 2px solid var(--border-base);
-  border-radius: 50% !important;
-  box-shadow: var(--glow-accent);
+  display: none;
 }
 
 .profile-pic img {
@@ -233,69 +223,97 @@ blockquote * {
 }
 
 main {
-  padding-left: 220px;
+  margin-left: 220px;
+  width: calc(100% - 220px);
   padding-top: 0;
   min-height: 100vh;
   position: relative;
   z-index: 1;
 }
 
+/* Reset nav defaults from Materialize */
 nav {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Desktop side-nav wrapper should be transparent (Materialize nav defaults are red) */
+nav.hide-on-small-only {
+  height: auto !important;
+  line-height: normal !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  position: static !important;
+}
+
+@media (min-width: 993px) {
+  /* Ensure mobile top bar is hidden on desktop */
+  .top-nav {
+    display: none !important;
+  }
+
+  /* Keep desktop nav wrapper invisible and sized to its contents */
+  nav.hide-on-small-only {
+    height: auto !important;
+    line-height: normal !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    position: static !important;
+  }
+}
+
+/* Mobile top nav */
+.top-nav {
+  display: none;
   background: rgba(5, 8, 23, 0.95);
   border-bottom: 1px solid var(--border-base);
   box-shadow: 0 10px 35px rgba(0, 0, 0, 0.45);
   height: 64px;
   backdrop-filter: blur(18px);
-}
-
-.top-nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 1.25rem;
 }
 
-main {
-  padding-left: 220px;
-  padding-top: 0;
-  min-height: 100vh;
-  position: relative;
-  z-index: 1;
-}
-
-nav i {
+.top-nav i {
   padding: 0 15px;
   position: relative;
   top: 5px;
   color: var(--accent);
 }
 
-nav .name-title {
+.top-nav .name-title {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  flex: 1;
+  min-width: 0; /* allow flex overflow handling */
+  text-align: center;
 }
 
-.name-title a {
+.top-nav .name-title a {
   font-family: var(--font-heading);
-  letter-spacing: 0.25em;
-  font-size: 1rem;
+  letter-spacing: 0.18em;
+  font-size: 0.95rem;
   color: var(--heading);
-}
-
-.name-title span {
-  font-size: 0.75rem;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .button-collapse,
 .button-collapse i {
   color: var(--accent);
+  font-size: 1.4rem;
+  flex-shrink: 0;
 }
 
 .buttons {
@@ -341,6 +359,25 @@ nav .name-title {
   background: var(--accent);
   box-shadow: 0 0 12px rgba(110, 247, 255, 0.8);
   animation: pulse 2s infinite ease-in-out;
+}
+
+.hero-shell {
+  display: flex;
+  justify-content: center;
+}
+
+.hero-content {
+  margin: 0 auto;
+  padding: 4rem 4rem 4rem 4rem !important;
+  background: radial-gradient(circle at 20% 20%, rgba(110, 247, 255, 0.08), transparent 55%), rgba(0, 0, 0, 0.25);
+  border-radius: 48px;
+  border: 1px solid rgba(110, 247, 255, 0.1);
+  box-shadow: 0 35px 120px rgba(0, 0, 0, 0.65);
+  gap: 1rem;
+}
+
+.hero-content .caption {
+  max-width: 640px;
 }
 
 @keyframes pulse {
@@ -396,10 +433,34 @@ ul.side-nav.fixed li.logo {
   background: rgba(9, 16, 36, 0.7);
   border: 1px solid var(--border-base);
   border-radius: 18px;
-  padding: 1.25rem 1rem 1.75rem;
-  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1.3rem 1rem 1.6rem;
+}
+
+.side-nav-name {
   text-align: center;
-  box-shadow: var(--glow-accent);
+  margin-top: 0.75rem;
+  padding: 0 0.5rem;
+}
+
+.side-nav-name .name {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  color: var(--heading);
+  margin-bottom: 0.25rem;
+}
+
+.side-nav-name .title {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-muted);
 }
 
 ul.side-nav.fixed li.logo a {
@@ -812,6 +873,8 @@ small {
 
 @media (max-width: 992px) {
   main {
+    margin-left: 0;
+    width: 100%;
     padding-left: 0px;
     padding-top: 64px;
   }
@@ -834,6 +897,22 @@ small {
     color: var(--accent);
     height: 56px;
     line-height: 56px;
+  }
+
+  nav.hide-on-small-only {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    height: auto;
+    position: static;
+  }
+
+  nav.hide-on-small-only {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    height: auto !important;
+    position: static;
   }
 
   h3 {
