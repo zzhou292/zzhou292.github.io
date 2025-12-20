@@ -324,8 +324,18 @@ nav.hide-on-small-only {
 }
 
 .typing {
+  display: inline-block;
+  min-width: 280px;
+  min-height: 1.6em;
+  text-align: left;
+  white-space: nowrap;
   color: var(--accent);
   text-shadow: var(--glow-accent);
+}
+
+.typed-cursor {
+  font-size: inherit;
+  color: var(--accent);
 }
 
 .hero-bio {
@@ -882,6 +892,23 @@ a.hoverline:hover {
   letter-spacing: 0.05em;
   color: var(--text-primary);
   word-break: break-word;
+}
+
+@media (max-width: 768px) {
+  #contact .page-title {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  #contact .container {
+    padding: 0 1rem 2rem;
+  }
+
+  #contact .contact-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 #experience .col.s12.m2 {
