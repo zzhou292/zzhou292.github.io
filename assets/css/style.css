@@ -825,6 +825,65 @@ a.hoverline:hover {
   color: var(--accent);
 }
 
+#contact .contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+#contact .contact-tile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: rgba(8, 12, 31, 0.75);
+  border: 1px solid rgba(110, 247, 255, 0.2);
+  border-radius: 18px;
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: transform 200ms ease, border 200ms ease, box-shadow 200ms ease;
+}
+
+#contact .contact-tile:hover {
+  transform: translateY(-4px);
+  border-color: rgba(110, 247, 255, 0.6);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+}
+
+#contact .contact-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle, rgba(110, 247, 255, 0.2), transparent 70%);
+  border: 1px solid rgba(110, 247, 255, 0.3);
+  color: var(--accent);
+  font-size: 1.3rem;
+}
+
+#contact .contact-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+#contact .contact-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+#contact .contact-value {
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+  word-break: break-word;
+}
+
 #experience .col.s12.m2 {
   text-align: center;
 }
