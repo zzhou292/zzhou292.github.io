@@ -388,11 +388,27 @@ nav.hide-on-small-only {
   border: 1px solid rgba(110, 247, 255, 0.1);
   box-shadow: 0 35px 120px rgba(0, 0, 0, 0.65);
   gap: 1rem;
-  min-height: 520px;
+  min-height: 560px;
   width: min(90vw, 900px);
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+#intro .caption h5 {
+  min-height: 4.6rem;
+  max-height: 4.6rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  line-height: 1.5;
+  overflow: hidden;
+}
+
+#intro .caption h5 .typing {
+  width: 100%;
+  text-align: left;
 }
 
 .hero-content .caption {
@@ -1110,7 +1126,7 @@ small {
   }
 
   .hero-content {
-    min-height: 520px;
+    min-height: 540px;
     width: 92vw;
   }
 
@@ -1121,7 +1137,7 @@ small {
   .card .card-content .hero-content {
     padding: 3rem 1.5rem !important;
     border-radius: 32px;
-    min-height: 480px;
+    min-height: 520px;
     width: 88vw;
   }
 
