@@ -324,14 +324,16 @@ nav.hide-on-small-only {
 }
 
 .typing {
-  display: inline-block;
-  min-height: 2.4rem;
+  display: block;
+  min-height: 3.6rem;
+  max-height: 3.6rem;
   max-width: 100%;
   text-align: center;
   white-space: normal;
   word-break: break-word;
   color: var(--accent);
   text-shadow: var(--glow-accent);
+  overflow: auto;
 }
 
 .typed-cursor {
@@ -1142,7 +1144,8 @@ small {
   }
 
   .typing {
-    display: inline-block;
+    min-height: 3.8rem;
+    max-height: 3.8rem;
   }
 
   #experience span.card-title a {
