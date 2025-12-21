@@ -325,30 +325,21 @@ nav.hide-on-small-only {
 
 .typing {
   display: inline-block;
-  min-width: 260px;
-  min-height: 1.8em;
-  text-align: left;
-  white-space: nowrap;
+  min-height: 2.4rem;
+  max-width: 100%;
+  text-align: center;
+  white-space: normal;
+  word-break: break-word;
   color: var(--accent);
   text-shadow: var(--glow-accent);
 }
 
-.typing-line {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  min-height: 2.2rem;
-  margin-top: 0.75rem;
-}
-
-.typing-label {
-  font-weight: 600;
-  letter-spacing: 0.35em;
-}
-
 .typed-cursor {
+  display: inline-block;
+  margin-left: 0.1rem;
   font-size: inherit;
   color: var(--accent);
+  vertical-align: baseline;
 }
 
 .hero-bio {
@@ -397,6 +388,11 @@ nav.hide-on-small-only {
   border: 1px solid rgba(110, 247, 255, 0.1);
   box-shadow: 0 35px 120px rgba(0, 0, 0, 0.65);
   gap: 1rem;
+  min-height: 520px;
+  width: min(90vw, 900px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .hero-content .caption {
@@ -1079,23 +1075,27 @@ small {
 
 @media (max-width: 600px) {
   h2 {
-    font-size: 22px;
-    line-height: 200%;
-    margin: 30px 0 0;
+    font-size: 2.4rem;
+  }
+
+  .hero-content {
+    min-height: 520px;
+    width: 92vw;
   }
 
   #intro.section .container *:not(span) {
     padding: 0;
   }
 
-  .card .card-content .card-title {
-    font-size: 20px;
-    line-height: 24px;
+  .card .card-content .hero-content {
+    padding: 3rem 1.5rem !important;
+    border-radius: 32px;
+    min-height: 480px;
+    width: 88vw;
   }
 
-  #experience span.card-title {
-    text-align: center;
-    display: block;
+  .typing {
+    display: inline-block;
   }
 
   #experience span.card-title a {
