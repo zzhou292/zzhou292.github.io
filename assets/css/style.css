@@ -829,8 +829,31 @@ a.hoverline:hover {
   height: auto;
 }
 
+.card.medium {
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+}
+
 .card.medium .card-image {
-  height: 240px;
+  height: 260px;
+  flex: 0 0 auto;
+}
+
+.card.medium .card-content,
+.card.medium .card-reveal {
+  flex: 1 1 auto;
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  .card.medium {
+    min-height: 420px;
+  }
+
+  .card.medium .card-image {
+    height: 220px;
+  }
 }
 
 .card-action a.btn-floating {
