@@ -840,6 +840,14 @@ a.hoverline:hover {
   flex: 0 0 auto;
 }
 
+.card.medium .card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
 .card.medium .card-content,
 .card.medium .card-reveal {
   flex: 1 1 auto;
