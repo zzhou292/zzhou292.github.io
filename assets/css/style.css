@@ -698,9 +698,8 @@ h3.teal {
   text-transform: uppercase;
   letter-spacing: 0.35em;
   color: var(--text-muted);
-  position: absolute;
-  right: 32px;
-  top: 32px;
+  display: block;
+  margin-top: 0.5rem;
 }
 
 .card li a {
