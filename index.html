@@ -153,6 +153,11 @@
       </li>
 
       <li class="bold">
+        <a aria-label="Navigate to the Gratitude section" href="#gratitude" class="waves-effect waves-dark teal-text"><i
+            class="mdi-action-favorite small"></i><span>Gratitude</span></a>
+      </li>
+
+      <li class="bold">
         <!--
         ICONS:
         1. mdi-action-description
@@ -220,6 +225,10 @@
           class="mdi-content-mail small"></i><span>Contact</span></a>
     </li>
     <li class="bold">
+      <a aria-label="Navigate to the Gratitude section" href="#gratitude" class="waves-effect waves-dark teal-text"><i
+          class="mdi-action-favorite small"></i><span>Gratitude</span></a>
+    </li>
+    <li class="bold">
       <a aria-label="Open Json's Resume in a new tab" href="https://zzhou292.github.io/assets/resume/resume-jz.pdf"
         target="_blank" class="waves-effect waves-dark teal-text"><i
           class="mdi-file-folder-open small"></i><span>Resume</span></a>
@@ -238,6 +247,7 @@
     <div id="skills-section">Loading skills...</div>
     <div id="education-section">Loading education...</div>
     <div id="contact-section">Loading contact...</div>
+    <div id="gratitude-section">Loading gratitude...</div>
   </main>
 
   <!-- Scripts in correct order -->
@@ -297,7 +307,7 @@
       }
 
       const sectionNames = ['intro', 'about', 'updates', 'experience', 'projects',
-        'publications', 'fundings', 'skills', 'education', 'contact'];
+        'publications', 'fundings', 'skills', 'education', 'contact', 'gratitude'];
 
       const sectionPromises = sectionNames.map(loadSection);
 
